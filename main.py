@@ -318,6 +318,13 @@ async def Main(app_id: str):
         if SetupUnlock(depot_data, app_id, tool_choice, depot_map):  # type: ignore
             LOG.info("游戏解锁配置成功！")
             LOG.info("重启Steam后生效")
+            
+            # windows 关闭 steam 应用
+            os.system('taskkill /f /im steam.exe')
+            # windows 启动 steam 应用
+            exe_path = STEAM_PATH / "steam.exe"
+            os.system(f'start "" "{exe_path}"')
+        
         else:
             LOG.error("配置失败")
 
