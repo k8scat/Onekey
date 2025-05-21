@@ -330,6 +330,7 @@ async def Main(app_id: str):
 
         os.system("pause")
         return True
+    
     except Exception as e:
         LOG.error(f"运行错误: {StackError(e)}")
         return os.system("pause")
